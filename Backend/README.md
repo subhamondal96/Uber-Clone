@@ -1,6 +1,6 @@
 # Backend API Documentation
 
-## /users/register Endpoint
+## `/users/register` Endpoint
 
 ### Description
 
