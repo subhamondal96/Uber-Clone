@@ -136,3 +136,69 @@ The server will respond with the authenticated user object and a JWT token.
 ```
 
 ---
+
+## `/users/profile` Endpoint
+
+### Description
+
+Retrieves the profile information of the currently authenticated user.
+
+### HTTP Method
+
+`GET`
+
+---
+
+### Authentication
+
+Requires a valid JWT token in the Authorization header:
+
+---
+
+### Example Response
+
+The server will respond with the authenticated user's profile information.
+
+#### Response Body
+
+-   **user** (object):
+    -   **fullname** (object):
+        -   **firstname** (string): User's first name (minimum 3 characters).
+        -   **lastname** (string): User's last name (minimum 3 characters).
+    -   **email** (string): User's email address (must be a valid email).
+
+#### Example Response
+
+```json
+{
+    "user": {
+        "fullname": {
+            "firstname": "John",
+            "lastname": "Doe"
+        },
+        "email": "john.doe@example.com"
+    }
+}
+```
+
+---
+
+## `/users/logout` Endpoint
+
+### Description
+
+Logout the current user and blacklist the token provided in cookie or headers
+
+### HTTP Method
+
+`Get`
+
+### Authentication
+
+Requires a valid JWT token in the Authorization header or cookie:
+
+```
+---
+
+
+```
