@@ -11,5 +11,3 @@ const server = http.createServer(app);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
-// 1hours 7min
