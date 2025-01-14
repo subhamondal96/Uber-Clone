@@ -4,6 +4,7 @@ import gsap from "gsap";
 import "remixicon/fonts/remixicon.css";
 import LocationSearchPanel from "../components/LocationSearchPanel";
 import VehicalPanel from "../components/VehicalPanel";
+import ConfirmedRide from "../components/ConfirmedRide";
 
 const Home = () => {
     const [pickup, setPickup] = useState("");
@@ -13,6 +14,8 @@ const Home = () => {
     const panelRef = useRef(null);
     const panelCloseRef = useRef(null);
     const [vehicalPanel, setVehicalPanel] = useState(false);
+    const confirmRidePanelRef = useRef(null);
+    const [confirmRidePanel, setConfirmRidePanel] = useState(false);
 
     const submitHandeler = (e) => {
         e.preventDefault();
@@ -56,6 +59,21 @@ const Home = () => {
             }
         },
         [vehicalPanel]
+    );
+
+    useGSAP(
+        function () {
+            if (confirmRidePanel) {
+                gsap.to(confirmRidePanelRef.current, {
+                    transform: "translateY(0)",
+                });
+            } else {
+                gsap.to(confirmRidePanelRef.current, {
+                    transform: "translateY(100%)",
+                });
+            }
+        },
+        [confirmRidePanel]
     );
 
     return (
@@ -128,9 +146,19 @@ const Home = () => {
 
             <div
                 ref={vehicalPanelRef}
-                className="fixed w-full z-10 bottom-0 bg-white px-3 py-10 pt-14 translate-y-full"
+                className="fixed w-full z-10 bottom-0 bg-white px-3 py-10 pt-12 translate-y-full"
             >
-                <VehicalPanel setVehicalPanel={setVehicalPanel} />
+                <VehicalPanel
+                    setConfirmRidePanel={setConfirmRidePanel}
+                    setVehicalPanel={setVehicalPanel}
+                />
+            </div>
+
+            <div
+                ref={confirmRidePanelRef}
+                className="fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 translate-y-full"
+            >
+                <ConfirmedRide />
             </div>
         </div>
     );
