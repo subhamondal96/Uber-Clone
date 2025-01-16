@@ -22,6 +22,9 @@ const Home = () => {
     const vehicleFoundRef = useRef(null);
     const [vehicalFound, setVehicalFound] = useState(false);
 
+    const waitingForDriverRef = useRef(null);
+    const [waitingForDriver, setWaitingForDriver] = useState(false);
+
     const submitHandeler = (e) => {
         e.preventDefault();
     };
@@ -94,6 +97,21 @@ const Home = () => {
             }
         },
         [vehicalFound]
+    );
+
+    useGSAP(
+        function () {
+            if (waitingForDriver) {
+                gsap.to(waitingForDriverRef.current, {
+                    transform: "translateY(0)",
+                });
+            } else {
+                gsap.to(waitingForDriverRef.current, {
+                    transform: "translateY(100%)",
+                });
+            }
+        },
+        [waitingForDriver]
     );
 
     return (
@@ -188,7 +206,14 @@ const Home = () => {
                 ref={vehicleFoundRef}
                 className="fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 translate-y-full"
             >
-                <LookingForDriver />
+                <LookingForDriver setVehicalFound={setVehicalFound} />
+            </div>
+
+            <div
+                ref={waitingForDriverRef}
+                className="fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 "
+            >
+                <WaitingForDriver setWaitingForDriver={setWaitingForDriver} />
             </div>
         </div>
     );
