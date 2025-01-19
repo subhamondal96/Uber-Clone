@@ -125,7 +125,7 @@ const Home = () => {
                 {/* image for temporary use */}
                 <img
                     className="h-full w-full object-cover"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAnC7KgawuNmngUVzXsPzW7zAFMP2Jgjor4A&s"
+                    src="https://miro.medium.com/v2/resize:fit:1400/0*gwMx05pqII5hbfmX.gif"
                     alt=""
                 />
             </div>
@@ -211,7 +211,7 @@ const Home = () => {
 
             <div
                 ref={waitingForDriverRef}
-                className="fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 "
+                className="fixed w-full z-10 bottom-0 bg-white px-3 py-6 pt-12 translate-y-full"
             >
                 <WaitingForDriver setWaitingForDriver={setWaitingForDriver} />
             </div>
