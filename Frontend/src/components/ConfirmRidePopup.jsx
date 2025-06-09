@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ConfirmRidePopup = (props) => {
     return (
@@ -53,12 +54,12 @@ const ConfirmRidePopup = (props) => {
                         </div>
                     </div>
                 </div>
-                <button
-                    onClick={() => {}}
-                    className="w-full mt-5 bg-green-500 text-white font-semibold p-2 rounded-lg"
+                <Link
+                    to="/captain-riding"
+                    className="w-full mt-5 flex justify-center  bg-green-500 text-white font-semibold p-2 rounded-lg"
                 >
                     Confirm
-                </button>
+                </Link>
                 <button
                     onClick={() => {
                         props.setConfirmRidePopupPanel(false);
